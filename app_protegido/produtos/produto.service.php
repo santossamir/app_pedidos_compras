@@ -1,5 +1,5 @@
 <?php
-     class ProtudoService{
+     class ProdutoService{
 
         private $conexao;
         private $nome_produto;

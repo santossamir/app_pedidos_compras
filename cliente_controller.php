@@ -1,3 +1,3 @@
 <?php
-    require_once './app_protegido/cliente_controller.php';
+    require_once './app_protegido/clientes/cliente_controller.php';
 ?>

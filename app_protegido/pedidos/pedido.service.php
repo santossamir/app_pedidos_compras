@@ -4,7 +4,7 @@
         private $conexao;
         private $pedido;
 
-        public function __construct(Conexao $conexao, Tarefa $pedido){
+        public function __construct(Conexao $conexao, Pedido $pedido){
             $this->conexao = $conexao->conectar();
             $this->pedido = $pedido;
         }

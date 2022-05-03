@@ -1,5 +1,5 @@
 <?php
-	$acao = 'recuperarTarefasPendentes';
+	$acao = 'recuperarPedidosPendentes';
 	require 'pedido_controller.php';
 ?>
 

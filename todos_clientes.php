@@ -1,6 +1,6 @@
 <?php
 	$acao = 'recuperar';
-	require 'clientes_controller.php';
+	require 'cliente_controller.php';
 ?>
 <html>
 	<head>

@@ -1,94 +1,51 @@
 <?php
    
-   require "./app_protegido/produto.model.php";
-   require "./app_protegido/produto.service.php";
-   require "./app_protegido/conexao.php";
+   require "produto.model.php";
+   require "produto.service.php";
+   require "/home/samir/Newtab Academy/PHP/app_pedidos_compras/app_protegido/conexao.php";
 
    $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
    
    if($acao == 'inserir'){
 
-      $tarefa = new Tarefa();
+      $nome_produto = new Produto();
       
-      $tarefa->__set('tarefa', $_POST['tarefa']);
+      $nome_produto->__set('nome_produto', $_POST['nome_produto']);
 
       $conexao = new Conexao();
 
-      $tarefaService = new TarefaService($conexao, $tarefa);
-      $tarefaService->inserir();
+      $produtoService = new ProdutoService($conexao, $nome_produto);
+      $produtoService->inserir();
 
-      header('Location: nova_tarefa.php?inclusao=1');
+      header('Location: produtos.php?inclusao=1');
 
    }else if($acao == 'recuperar'){
 
-      $tarefa = new Tarefa();
+      $nome_produto = new Produto();
       $conexao = new Conexao();
 
-      $tarefaService = new TarefaService($conexao, $tarefa);
-      $tarefas = $tarefaService->recuperar();
+      $produtoService = new ProdutoService($conexao, $nome_produto);
+      $nome_produto = $produtoService->recuperar();
 
    } else if($acao == 'atualizar'){
 
-      $tarefa = new Tarefa();
+      $nome_produto = new Produto();
 
-      $tarefa->__set('id', $_POST['id']);
-      $tarefa->__set('tarefa', $_POST['tarefa']);
+      $nome_produto->__set('id_produto', $_POST['id_produto']);
+      $nome_produto->__set('nome_produto', $_POST['nome_produto']);
 
       $conexao = new Conexao();
 
-      $tarefaService = new TarefaService($conexao, $tarefa);
-      if($tarefaService->atualizar()){
+      $produtoService = new ProdutoService($conexao, $nome_produto);
+      if($produtoService->atualizar()){
 
          if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
             header('location: index.php');
          }else{
-            header('location: todas_tarefas.php');
+            header('location: produtos.php');
          }
       };
 
-   }else if($acao == 'remover'){
-
-      $tarefa = new Tarefa();
-      $tarefa->__set('id', $_GET['id']);
-
-      $conexao = new Conexao();
-
-      $tarefaService = new TarefaService($conexao, $tarefa);
-      $tarefaService->remover();
-
-      if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
-         header('location: index.php');
-      }else{
-         header('location: todas_tarefas.php');
-      }
-
-   }else if($acao == 'marcarRealizada'){
-
-      $tarefa = new Tarefa();
-
-      $tarefa->__set('id', $_GET['id']);
-      $tarefa->__set('id_status', 2);
-
-      $conexao = new Conexao();
-
-      $tarefaService = new TarefaService($conexao, $tarefa);
-      $tarefaService->marcarRealizada();
-
-      if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
-         header('location: index.php');
-      }else{
-         header('location: todas_tarefas.php');
-      }
-
-   }else if($acao == 'recuperarTarefasPendentes'){
-
-      $tarefa = new Tarefa();
-      $tarefa->__set('id_status', 1);
-
-      $conexao = new Conexao();
-
-      $tarefaService = new TarefaService($conexao, $tarefa);
-      $tarefas = $tarefaService->recuperarTarefasPendentes();
    }
 
 ?>
