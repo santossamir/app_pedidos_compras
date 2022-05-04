@@ -25,7 +25,7 @@
       $conexao = new Conexao();
 
       $produtoService = new ProdutoService($conexao, $nome_produto);
-      $nome_produto = $produtoService->recuperar();
+      $produtos = $produtoService->recuperar();
 
    } else if($acao == 'atualizar'){
 

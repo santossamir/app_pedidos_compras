@@ -17,7 +17,7 @@
       $clienteService = new ClienteService($conexao, $nome_cliente);
       $clienteService->inserir();
 
-      header('Location: nova_tarefa.php?inclusao=1');
+      //header('Location: novo_cliente.php?inclusao=1');
 
    }else if($acao == 'recuperar'){
 
@@ -25,7 +25,7 @@
       $conexao = new Conexao();
 
       $clienteService = new ClienteService($conexao, $nome_cliente);
-      $nome_cliente = $clienteService->recuperar();
+      $clientes = $clienteService->recuperar();
 
    } else if($acao == 'atualizar'){
 

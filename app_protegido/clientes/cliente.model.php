@@ -3,7 +3,7 @@
         private $id_cliente;
         private $nome_cliente;
         private $email_cliente;
-        private $senha_cliente;
+        private $cpf_cliente;
 
         public function __get($atributo) {
             return $this->$atributo;

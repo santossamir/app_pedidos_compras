@@ -1,3 +1,7 @@
+<?php
+	$acao = 'inserir';
+	require 'cliente_controller.php';
+?>
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -31,8 +35,6 @@
 			<div class="row">
 				<div class="col-md-3 menu">
 					<ul class="list-group">
-						<li class="list-group-item"><a href="index.php">Pedidos pendentes</a></li>
-						<li class="list-group-item"><a href="novo_pedido.php">Novo pedido</a></li>
 						<li class="list-group-item"><a href="todos_pedidos.php">Todos os pedidos</a></li>
 						<li class="list-group-item"><a href="produtos.php">Produtos</a></li>
                         <li class="list-group-item active"><a href="novo_cliente.php">Novo cliente</a></li>
@@ -47,10 +49,13 @@
 								<h4>Novo cliente</h4>
 								<hr />
 
-								<form>
+								<form action="" method = "post">
 									<div class="form-group">
-										<label>Descrição da tarefa:</label>
-										<input type="text" class="form-control" placeholder="Exemplo: Lavar o carro">
+										<label>Dados do cliente:</label>
+										<input type="text" name="nome_cliente" class="form-control" placeholder="Nome" required>
+										<input type="text" name="email_cliente" class="form-control" placeholder="E-mail" required>
+										<input type="text" name="cpf_cliente" class="form-control" placeholder="CPF" required>
+
 									</div>
 
 									<button class="btn btn-success">Cadastrar</button>

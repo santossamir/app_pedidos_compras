@@ -81,8 +81,6 @@
 			<div class="row">
 				<div class="col-sm-3 menu">
 				<ul class="list-group">
-						<li class="list-group-item"><a href="index.php">Pedidos pendentes</a></li>
-						<li class="list-group-item"><a href="novo_pedido.php">Novo pedido</a></li>
 						<li class="list-group-item active"><a href="todos_pedidos.php">Todos os pedidos</a></li>
 						<li class="list-group-item"><a href="produtos.php">Produtos</a></li>
 						<li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>

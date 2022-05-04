@@ -83,8 +83,6 @@
 			<div class="row">
 				<div class="col-sm-3 menu">
 				<ul class="list-group">
-						<li class="list-group-item"><a href="index.php">Pedidos pendentes</a></li>
-						<li class="list-group-item"><a href="novo_pedido.php">Novo pedido</a></li>
 						<li class="list-group-item"><a href="todos_pedidos.php">Todos os pedidos</a></li>
                         <li class="list-group-item active"><a href="produtos.php">Produtos</a></li>
                         <li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
@@ -99,11 +97,11 @@
 								<h4>Produtos</h4>
 								<hr />
 
-								<?php
-									foreach($produto as $dado => $produto){ 
+								<?php 
+									foreach($produtos as $produto){ 
 								?>
 									<div class="row mb-3 d-flex align-items-center tarefa">
-										<div class="col-sm-9" id="tarefa_<?php echo $produto->id_produto ?>"><?php echo $produto->produto ?> (<?php echo $produto->status?>)</div>
+										<div class="col-sm-9" id="tarefa_<?php echo $produto->id_produto ?>"> <?=$produto->id_produto?> / <?=$produto->nome_produto?> / R$ <?=$produto->valor_produto?> </div>
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
 											<i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?php echo $produto->id_produto?>)"></i>
 											

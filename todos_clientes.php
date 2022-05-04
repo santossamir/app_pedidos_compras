@@ -81,8 +81,6 @@
 			<div class="row">
 				<div class="col-sm-3 menu">
 				<ul class="list-group">
-						<li class="list-group-item"><a href="index.php">Pedidos pendentes</a></li>
-						<li class="list-group-item"><a href="novo_pedido.php">Novo pedido</a></li>
 						<li class="list-group-item"><a href="todos_pedidos.php">Todos os pedidos</a></li>
 						<li class="list-group-item"><a href="produtos.php">Produtos</a></li>
 						<li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
@@ -98,10 +96,10 @@
 								<hr />
 
 								<?php
-									foreach($cliente as $dado => $cliente){ 
+									foreach($clientes as $cliente){ 
 								?>
 									<div class="row mb-3 d-flex align-items-center tarefa">
-										<div class="col-sm-9" id="tarefa_<?php echo $cliente->id_cliente ?>"><?php echo $cliente->pedido?> (<?php echo $cliente->status?>)</div>
+										<div class="col-sm-9" id="tarefa_<?php echo $cliente->id_cliente ?>"><?=$cliente->id_cliente ?> / <?=$cliente->nome_cliente ?> / <?=$cliente->email_cliente ?> / <?=$cliente->cpf_cliente ?> </div>
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
 											<i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?php echo $cliente->id_cliente?>)"></i>
 											
