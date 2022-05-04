@@ -71,8 +71,8 @@
 		<nav class="navbar navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="#">
-					<img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-					App Pedidos de Compra
+					<img src="img/carrinho-de-compras.png" class="d-inline-block align-top" alt="">
+					<span>App Pedidos de Compra</span>
 				</a>
 			</div>
 		</nav>
@@ -81,7 +81,7 @@
 			<div class="row">
 				<div class="col-sm-3 menu">
 				<ul class="list-group">
-						<li class="list-group-item active"><a href="todos_pedidos.php">Todos os pedidos</a></li>
+						<li class="list-group-item active"><a href="index.php">Todos os pedidos</a></li>
 						<li class="list-group-item"><a href="produtos.php">Produtos</a></li>
 						<li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
 						<li class="list-group-item"><a href="todos_clientes.php">Todos os clientes</a></li>
@@ -92,7 +92,7 @@
 					<div class="container pagina">
 						<div class="row">
 							<div class="col">
-								<h4>Todos os pedidos</h4>
+								<h3 class="text-primary">Todos os pedidos</h3>
 								<hr />
 								<?php
 									foreach($pedido as $dado => $pedido){ 

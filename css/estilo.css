@@ -13,20 +13,41 @@
 
 li.list-group-item.active {
 	background-color: #fff;
-	border-color: #009933;
-    border-left:solid 10px #009933;
+	border-color: #0d6efd;
+    border-left:solid 10px #0d6efd;
 }
 
 li a {
-	color: #212529;
+	color: #495057;
 }
 
 li a:hover {
 	text-decoration: none;
 }
 
-h4 {
-	color: #009933 !important;
+.form-group input{
+	margin-bottom: 10px;;
 }
 
+.table {
+	text-align: center;
+}
 
+.table tbody{
+	color: #495057;
+}
+
+.navbar-brand img{
+	position: relative;
+    bottom: 2px;
+	width: 30px;
+	height: 30 ;
+}
+
+span{
+  margin-left: 5px;	
+  background: -webkit-linear-gradient(#0d6efd, #2f5fa8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}

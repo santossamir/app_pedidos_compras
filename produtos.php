@@ -18,8 +18,8 @@
 		<nav class="navbar navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="#">
-					<img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-					App Pedidos de Compra
+					<img src="img/carrinho-de-compras.png" class="d-inline-block align-top" alt="">
+					<span>App Pedidos de Compra</span>
 				</a>
 			</div>
 		</nav>
@@ -83,7 +83,7 @@
 			<div class="row">
 				<div class="col-sm-3 menu">
 				<ul class="list-group">
-						<li class="list-group-item"><a href="todos_pedidos.php">Todos os pedidos</a></li>
+						<li class="list-group-item"><a href="index.php">Todos os pedidos</a></li>
                         <li class="list-group-item active"><a href="produtos.php">Produtos</a></li>
                         <li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
                         <li class="list-group-item"><a href="todos_clientes.php">Todos os clientes</a></li>
@@ -94,27 +94,30 @@
 					<div class="container pagina">
 						<div class="row">
 							<div class="col">
-								<h4>Produtos</h4>
+								<h3 class="text-primary">Lista de produtos</h3>
 								<hr />
-
-								<?php 
-									foreach($produtos as $produto){ 
-								?>
-									<div class="row mb-3 d-flex align-items-center tarefa">
-										<div class="col-sm-9" id="tarefa_<?php echo $produto->id_produto ?>"> <?=$produto->id_produto?> / <?=$produto->nome_produto?> / R$ <?=$produto->valor_produto?> </div>
-										<div class="col-sm-3 mt-2 d-flex justify-content-between">
-											<i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?php echo $produto->id_produto?>)"></i>
+								<table class="table table-borderless">
+									<thead class="text-secondary">
+										<tr>
+											<th>Ident. do Produto</th>
+											<th>Nome do Produto</th>
+											<th>Valor do Produto</th>
+										</tr>
+									</thead>
+									<tbody >
+										<?php 
+											foreach($produtos as $produto){ 
+										?>
+											<tr>
+												<th><?=$produto->id_produto?></th>
+												<td><?=$produto->nome_produto?> </td>
+												<td>R$ <?=$produto->valor_produto?></td>
+											</tr>
 											
-											<?php if($tarefa->status == 'pendente'){?>
-												<i class="fas fa-edit fa-lg text-info" onclick="editar(<?php echo $produto->id_produto?>, '<?php echo $produto->produto ?>')"></i>
-												<i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?php echo $produto->id_produto?>)"></i>
-											<?php } ?>
-										</div>
-									</div>
-
-								<?php }
-								?>	
-								
+										<?php }
+										?>
+									</tbody>	
+								</table>
 							</div>
 						</div>
 					</div>
@@ -123,3 +126,15 @@
 		</div>
 	</body>
 </html>
+
+ <!--
+	<div class="col-sm-3 mt-2 d-flex justify-content-between">
+		<i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?php echo $produto->id_produto?>)"></i>
+								
+			<?php if($tarefa->status == 'pendente'){?>
+				<i class="fas fa-edit fa-lg text-info" onclick="editar(<?php echo $produto->id_produto?>, '<?php echo $produto->produto ?>')"></i>
+				<i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?php echo $produto->id_produto?>)"></i>
+			<?php } ?>
+		</div>
+	</div>
+ -->

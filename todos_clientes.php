@@ -71,8 +71,8 @@
 		<nav class="navbar navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="#">
-					<img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-					App Pedidos de Compra
+					<img src="img/carrinho-de-compras.png" class="d-inline-block align-top" alt="">
+					<span>App Pedidos de Compra</span>
 				</a>
 			</div>
 		</nav>
@@ -81,7 +81,7 @@
 			<div class="row">
 				<div class="col-sm-3 menu">
 				<ul class="list-group">
-						<li class="list-group-item"><a href="todos_pedidos.php">Todos os pedidos</a></li>
+						<li class="list-group-item"><a href="index.php">Todos os pedidos</a></li>
 						<li class="list-group-item"><a href="produtos.php">Produtos</a></li>
 						<li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
                         <li class="list-group-item active"><a href="todos_clientes.php">Todos os clientes</a></li>
@@ -92,26 +92,32 @@
 					<div class="container pagina">
 						<div class="row">
 							<div class="col">
-								<h4>Todos os clientes</h4>
+								<h3 class="text-primary">Todos os clientes</h3>
 								<hr />
-
-								<?php
-									foreach($clientes as $cliente){ 
-								?>
-									<div class="row mb-3 d-flex align-items-center tarefa">
-										<div class="col-sm-9" id="tarefa_<?php echo $cliente->id_cliente ?>"><?=$cliente->id_cliente ?> / <?=$cliente->nome_cliente ?> / <?=$cliente->email_cliente ?> / <?=$cliente->cpf_cliente ?> </div>
-										<div class="col-sm-3 mt-2 d-flex justify-content-between">
-											<i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?php echo $cliente->id_cliente?>)"></i>
+								<table class="table table-borderless ">
+									<thead class="text-secondary">
+										<tr>
+											<th>Ident. do Cliente</th>
+											<th>Nome do Cliente</th>
+											<th>E-mail do Cliente</th>
+											<th>CPF do Cliente</th>
+										</tr>
+									</thead>
+									<tbody >
+										<?php 
+											foreach($clientes as $cliente){ 
+										?>
+											<tr>
+												<th><?=$cliente->id_cliente?></th>
+												<td><?=$cliente->nome_cliente?></td>
+												<td><?=$cliente->email_cliente ?></td>
+												<td><?=$cliente->cpf_cliente ?></td>
+											</tr>
 											
-											<?php if($tarefa->status == 'pendente'){?>
-												<i class="fas fa-edit fa-lg text-info" onclick="editar(<?php echo $cliente->id_cliente ?>, '<?php echo $cliente->pedido?>')"></i>
-												<i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?php echo $cliente->id_cliente?>)"></i>
-											<?php } ?>
-										</div>
-									</div>
-
-								<?php }
-								?>
+										<?php }
+										?>
+									</tbody>	
+								</table>
 							</div>
 						</div>
 					</div>
@@ -120,3 +126,13 @@
 		</div>
 	</body>
 </html>
+
+<!--
+	<div class="row mb-3 d-flex align-items-center tarefa">
+			<?php if($tarefa->status == 'pendente'){?>
+				<i class="fas fa-edit fa-lg text-info" onclick="editar(<?php echo $cliente->id_cliente ?>, '<?php echo $cliente->pedido?>')"></i>
+				<i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?php echo $cliente->id_cliente?>)"></i>
+			<?php } ?>
+		</div>
+	</div>
+-->

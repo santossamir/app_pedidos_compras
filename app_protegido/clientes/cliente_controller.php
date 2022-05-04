@@ -9,15 +9,19 @@
    if($acao == 'inserir'){
 
       $nome_cliente = new Cliente();
+      $email_cliente = new Cliente();
+      $cpf_cliente = new Cliente();
       
       $nome_cliente->__set('nome_cliente', $_POST['nome_cliente']);
+      $email_cliente->__set('email_cliente', $_POST['email_cliente']);
+      $cpf_cliente->__set('cpf_cliente', $_POST['cpf_cliente']);
 
       $conexao = new Conexao();
 
-      $clienteService = new ClienteService($conexao, $nome_cliente);
+      $clienteService = new ClienteService($conexao, $nome_cliente, $email_cliente, $cpf_cliente);
       $clienteService->inserir();
 
-      //header('Location: novo_cliente.php?inclusao=1');
+      header('Location: novo_cliente.php?inclusao=1');
 
    }else if($acao == 'recuperar'){
 

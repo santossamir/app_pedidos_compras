@@ -1,7 +1,3 @@
-<?php
-	$acao = 'inserir';
-	require 'cliente_controller.php';
-?>
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -17,16 +13,16 @@
 		<nav class="navbar navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="#">
-					<img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-					App Pedidos de Compra
+					<img src="img/carrinho-de-compras.png" class="d-inline-block align-top" alt="">
+					<span>App Pedidos de Compra</span>
 				</a>
 			</div>
 		</nav>
 		<?php 
 			if(isset($_GET['inclusao']) && $_GET['inclusao'] == 1){
 	    ?>
-			<div class="bg-success pt-2 text-white d-flex justify-content-center">
-				<h5>Cliente inserido com sucesso!</h5>
+			<div class="bg-primary pt-2 text-white d-flex justify-content-center">
+				<h5>Cliente cadastrado com sucesso!</h5>
 			</div>
 		<?php } 
 		?>
@@ -35,7 +31,7 @@
 			<div class="row">
 				<div class="col-md-3 menu">
 					<ul class="list-group">
-						<li class="list-group-item"><a href="todos_pedidos.php">Todos os pedidos</a></li>
+						<li class="list-group-item"><a href="index.php">Todos os pedidos</a></li>
 						<li class="list-group-item"><a href="produtos.php">Produtos</a></li>
                         <li class="list-group-item active"><a href="novo_cliente.php">Novo cliente</a></li>
                         <li class="list-group-item"><a href="todos_clientes.php">Todos os clientes</a></li>
@@ -46,19 +42,19 @@
 					<div class="container pagina">
 						<div class="row">
 							<div class="col">
-								<h4>Novo cliente</h4>
+								<h3 class="text-primary">Novo cliente</h3>
 								<hr />
 
-								<form action="" method = "post">
+								<form method="post" action="cliente_controller.php?acao=inserir">
 									<div class="form-group">
-										<label>Dados do cliente:</label>
+										<label class="text-secondary">Dados do cliente:</label>
 										<input type="text" name="nome_cliente" class="form-control" placeholder="Nome" required>
 										<input type="text" name="email_cliente" class="form-control" placeholder="E-mail" required>
-										<input type="text" name="cpf_cliente" class="form-control" placeholder="CPF" required>
+										<input type="text" name="cpf_cliente" class="form-control" placeholder="000.000.000-00" required>
 
 									</div>
 
-									<button class="btn btn-success">Cadastrar</button>
+									<button class="btn btn-primary">Cadastrar</button>
 								</form>
 							</div>
 						</div>
