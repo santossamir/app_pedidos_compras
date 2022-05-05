@@ -32,7 +32,7 @@
         }
 
         public function atualizar(){
-            $query = "update tb_produtos set nome_produto = :nome_produto where id = :id_produto";
+            $query = "update tb_produtos set nome_produto = :nome_produto where id_produto = :id_produto";
             $stmt = $this->conexao->prepare($query);
             $stmt->bindValue(':nome_produto', $this->nome_produto->__get('nome_produto'));
             $stmt->bindValue(':id_produto', $this->nome_produto->__get('id_produto'));

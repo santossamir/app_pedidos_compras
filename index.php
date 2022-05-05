@@ -94,23 +94,33 @@
 							<div class="col">
 								<h3 class="text-primary">Todos os pedidos</h3>
 								<hr />
-								<?php
-									foreach($pedido as $dado => $pedido){ 
-								?>
-									<div class="row mb-3 d-flex align-items-center tarefa">
-										<div class="col-sm-9" id="tarefa_<?php echo $pedido->id_cliente ?>"><?php echo $pedido->pedido?> (<?php echo $pedido->status?>)</div>
-										<div class="col-sm-3 mt-2 d-flex justify-content-between">
-											<i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?php echo $pedido->id_cliente?>)"></i>
-											
-											<?php if($tarefa->status == 'pendente'){?>
-												<i class="fas fa-edit fa-lg text-info" onclick="editar(<?php echo $pedido->id_cliente ?>, '<?php echo $pedido->pedido?>')"></i>
-												<i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?php echo $pedido->id_cliente?>)"></i>
-											<?php } ?>
-										</div>
-									</div>
-
-								<?php }
-								?>
+								<table class="table table-borderless">
+									<thead class="text-secondary">
+										<tr>
+											<th>Id. do Cliente</th>
+											<th>Pedido</th>
+											<th>Data</th>
+											<th>Excluir</th>
+											<th>Editar</th>
+											<th>Status</th>
+										</tr>
+									</thead>
+									<tbody >
+										<?php 
+											foreach($pedidos as $pedido){ 
+										?>
+											<tr>
+												<th><?=$pedido->id_cliente?></th>
+												<td><?=$pedido->pedido?> (<?= $pedido->status?>)</td>
+												<td><?=$pedido->data_pedido?></td>
+												<td><i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?php echo $pedido->id?>)"></i></td>
+												<td><i class="fas fa-edit fa-lg text-info" onclick="editar(<?php echo $pedido->id?>, '<?php echo $pedido->pedido ?>')"></i></td>
+												<td><i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?php echo $pedido->id_pedido?>)"></i></td>
+											</tr>
+										<?php }
+										?>
+									</tbody>	
+								</table>
 							</div>
 						</div>
 					</div>

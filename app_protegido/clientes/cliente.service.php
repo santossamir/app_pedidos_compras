@@ -13,7 +13,7 @@
             $this->cpf_cliente = $cpf_cliente;
         }
 
-        public function inserir(){
+        public function inserir(){ //create
             $nome_cliente = $_POST["nome_cliente"];
             $email_cliente = $_POST["email_cliente"];
             $cpf_cliente = $_POST["cpf_cliente"];
@@ -26,28 +26,29 @@
             $stmt->execute();
         }
 
-        public function recuperar(){
+        public function recuperar(){ //read
             $query_consultar = '
                 select 
-                   *
+                   nome_cliente,
+                   email_cliente,
+                   cpf_cliente
                 from
                    tb_clientes
             ';
             $stmt = $this->conexao->prepare($query_consultar);
             $stmt->execute();
-            
             return $stmt->fetchAll(PDO::FETCH_OBJ);
         }
 
-        public function atualizar(){
-            $query = "update tb_clientes set nome_cliente = :nome_cliente where id = :id_cliente";
-            $stmt = $this->conexao->prepare($query);
+        public function atualizar(){ //update
+            $query_atualizar = "update tb_clientes set nome_cliente = :nome_cliente where id = :id_cliente";
+            $stmt = $this->conexao->prepare($query_atualizar);
             $stmt->bindValue(':nome_cliente', $this->nome_cliente->__get('nome_cliente'));
             $stmt->bindValue(':id_cliente', $this->nome_cliente->__get('id_cliente'));
             return $stmt->execute();
         }
 
-        public function remover(){
+        public function remover(){ //delete
             $query = 'delete from tb_clientes where id_cliente = :id_cliente';
             $stmt = $this->conexao->prepare($query);
             $stmt->bindValue(':id_cliente', $this->nome_cliente->__get('id_cliente'));

@@ -46,6 +46,22 @@
          }
       };
 
+   }else if($acao == 'remover'){
+
+      $nome_produto = new Produto();
+      $nome_produto->__set('id_produto', $_GET['id_produto']);
+
+      $conexao = new Conexao();
+
+      $produtoService = new ProdutoService($conexao, $nome_produto);
+      $produtoService->remover();
+
+      if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
+         header('location: index.php');
+      }else{
+         header('location: produtos.php');
+      }
+
    }
 
 ?>

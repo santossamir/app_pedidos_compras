@@ -28,7 +28,7 @@
 			function editar(id, txt_tarefa){
 				//Form de Edicação
 				let form = document.createElement('form');
-				form.action = 'tarefa_controller.php?acao=atualizar';
+				form.action = 'produto_controller.php?acao=atualizar';
 				form.method = 'post';
 				form.className = 'row';
 
@@ -71,7 +71,7 @@
 			}
 
 			function remover(id){
-				location.href = 'todas_tarefas.php?acao=remover&id='+id;
+				location.href = 'produtos.php?acao=remover&id_produto='+id;
 			}
 
 			function marcarRealizada(id){
@@ -99,9 +99,11 @@
 								<table class="table table-borderless">
 									<thead class="text-secondary">
 										<tr>
-											<th>Ident. do Produto</th>
-											<th>Nome do Produto</th>
-											<th>Valor do Produto</th>
+											<th>Id. do Produto</th>
+											<th>Produto</th>
+											<th>Valor</th>
+											<th>Excluir</th>
+											<th>Editar</th>
 										</tr>
 									</thead>
 									<tbody >
@@ -112,8 +114,9 @@
 												<th><?=$produto->id_produto?></th>
 												<td><?=$produto->nome_produto?> </td>
 												<td>R$ <?=$produto->valor_produto?></td>
+												<td><i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?php echo $produto->id?>)"></i></td>
+												<td><i class="fas fa-edit fa-lg text-info" onclick="editar(<?php echo $produto->id?>, '<?php echo $produto->produto ?>')"></i></td>
 											</tr>
-											
 										<?php }
 										?>
 									</tbody>	
@@ -127,10 +130,7 @@
 	</body>
 </html>
 
- <!--
-	<div class="col-sm-3 mt-2 d-flex justify-content-between">
-		<i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?php echo $produto->id_produto?>)"></i>
-								
+ <!--							
 			<?php if($tarefa->status == 'pendente'){?>
 				<i class="fas fa-edit fa-lg text-info" onclick="editar(<?php echo $produto->id_produto?>, '<?php echo $produto->produto ?>')"></i>
 				<i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?php echo $produto->id_produto?>)"></i>

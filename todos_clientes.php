@@ -15,7 +15,7 @@
 			function editar(id, txt_tarefa){
 				//Form de Edicação
 				let form = document.createElement('form');
-				form.action = 'tarefa_controller.php?acao=atualizar';
+				form.action = 'cliente_controller.php?acao=atualizar';
 				form.method = 'post';
 				form.className = 'row';
 
@@ -58,7 +58,7 @@
 			}
 
 			function remover(id){
-				location.href = 'todas_tarefas.php?acao=remover&id='+id;
+				location.href = 'todos_clientes.php?acao=remover&id_cliente='+id;
 			}
 
 			function marcarRealizada(id){
@@ -97,10 +97,11 @@
 								<table class="table table-borderless ">
 									<thead class="text-secondary">
 										<tr>
-											<th>Ident. do Cliente</th>
-											<th>Nome do Cliente</th>
-											<th>E-mail do Cliente</th>
-											<th>CPF do Cliente</th>
+											<th>Nome</th>
+											<th>E-mail</th>
+											<th>CPF</th>
+											<th>Excluir</th>
+											<th>Editar</th>
 										</tr>
 									</thead>
 									<tbody >
@@ -108,10 +109,11 @@
 											foreach($clientes as $cliente){ 
 										?>
 											<tr>
-												<th><?=$cliente->id_cliente?></th>
 												<td><?=$cliente->nome_cliente?></td>
 												<td><?=$cliente->email_cliente ?></td>
 												<td><?=$cliente->cpf_cliente ?></td>
+												<td><i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?php echo $cliente->id?>)"></i></td>
+												<td><i class="fas fa-edit fa-lg text-info" onclick="editar(<?php echo $cliente->id?>, '<?php echo $cliente->cliente ?>')"></i></td>
 											</tr>
 											
 										<?php }

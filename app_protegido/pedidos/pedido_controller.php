@@ -25,7 +25,7 @@
       $conexao = new Conexao();
 
       $pedidoService = new PedidoService($conexao, $pedido);
-      $pedido = $pedidoService->recuperar();
+      $pedidos = $pedidoService->recuperar();
 
    } else if($acao == 'atualizar'){
 

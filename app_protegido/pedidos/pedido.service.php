@@ -18,9 +18,10 @@
         public function recuperar(){
             $query_consultar = '
                 select 
-                   ?????????? 
+                   p.id_cliente, p.pedido, p.data_pedido, s.status 
                 from
-                   ??????????
+                   tb_pedidos as p
+                   left join tb_status as s on (p.id_status = s.id_status)
             ';
             $stmt = $this->conexao->prepare($query_consultar);
             $stmt->execute();

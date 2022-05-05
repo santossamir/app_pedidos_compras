@@ -35,7 +35,7 @@
 
       $nome_cliente = new Cliente();
 
-      $nome_cliente->__set('id', $_POST['id']);
+      $nome_cliente->__set('id_cliente', $_POST['id_cliente']);
       $nome_cliente->__set('nome_cliente', $_POST['nome_cliente']);
 
       $conexao = new Conexao();
