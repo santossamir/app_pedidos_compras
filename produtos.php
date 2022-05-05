@@ -25,7 +25,7 @@
 		</nav>
 
 		<script>
-			function editar(id, txt_tarefa){
+			/*function editar(id, txt_tarefa){
 				//Form de Edicação
 				let form = document.createElement('form');
 				form.action = 'produto_controller.php?acao=atualizar';
@@ -76,7 +76,7 @@
 
 			function marcarRealizada(id){
 				location.href = 'todas_tarefas.php?acao=marcarRealizada&id='+id;
-			}
+			}*/
 		</script>
 
 		<div class="container app">

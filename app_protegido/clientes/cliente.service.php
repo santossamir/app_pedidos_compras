@@ -29,7 +29,8 @@
         public function recuperar(){ //read
             $query_consultar = '
                 select 
-                   nome_cliente,
+                   id_cliente,
+                    nome_cliente,
                    email_cliente,
                    cpf_cliente
                 from

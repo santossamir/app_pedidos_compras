@@ -11,53 +11,55 @@
 		<link rel="stylesheet" href="css/estilo.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		
 		<script>
-			function editar(id, txt_tarefa){
+			function editar(id_cliente, txt_cliente){
 				//Form de Edicação
 				let form = document.createElement('form');
-				form.action = 'cliente_controller.php?acao=atualizar';
+				form.action = '#' /*'cliente_controller.php?acao=atualizar'*/;
 				form.method = 'post';
 				form.className = 'row';
 
 				//Input para entrada de texto
-				let inputTarefa = document.createElement('input');
-				inputTarefa.type = 'text';
-				inputTarefa.name = 'tarefa';
-				inputTarefa.className = 'col-9 form-control';
-				inputTarefa.value = txt_tarefa; 
+				let inputCliente = document.createElement('input');
+				inputCliente.type = 'text';
+				inputCliente.name = 'cliente';
+				inputCliente.className = 'col-7 form-control';
+				inputCliente.value = txt_cliente;
 
-				//Criar input hidden para guardar o id da tarefa
-				let inputId = document.createElement('input');
-				inputId.type = 'hidden';
-				inputId.name = 'id';
-				inputId.value = id;
+				//Criar um input hidden para guardar o id_cliente do cliente
+				let inputIdCliente = document.createElement('input');
+				inputIdCliente.type = 'hidden';
+				inputIdCliente.name = 'id_cliente';
+				inputIdCliente.value = id_cliente;
 				
 				//Button para envio do form
 				let button = document.createElement('button');
 				button.type = 'submit';
-				button.className = 'col-3 btn btn-info';
+				button.className = 'col-4 btn btn-info';
 				button.innerHTML = 'Atualizar';
 
-				//Incluir inputTarefa no form
-				form.appendChild(inputTarefa);
+				//Incluir inputCliente no form
+				form.appendChild(inputCliente);
 
-				//Incluir inputId no form
-				form.appendChild(inputId);
+				//Incluir inputIdCliente no form
+				form.appendChild(inputIdCliente);
+				
+				//Incluir button no form
+				form.appendChild(button)
 
-				//Incluir inputTarefa no form
-				form.appendChild(button);
+				//Selecionar elemento cliente
+				let cliente = document.getElementById('cliente_'+id_cliente);
 
-				//Selecionando a div tarefa
-				let tarefa = document.getElementById('tarefa_'+id);
+				//Limpar o texto cliente
+				cliente.innerHTML = '';
 
-				//Limpar texto da tarefa para incluir o form
-				tarefa.innerHTML = '';
-
-				//Incluir form na pag
-				tarefa.insertBefore(form, tarefa[0]);
+				//incluir form na pagina
+				cliente.insertBefore(form, cliente[0])
+	
 			}
 
-			function remover(id){
+			function remover(id, txt_cliente){
 				location.href = 'todos_clientes.php?acao=remover&id_cliente='+id;
 			}
 
@@ -109,11 +111,13 @@
 											foreach($clientes as $cliente){ 
 										?>
 											<tr>
-												<td><?=$cliente->nome_cliente?></td>
+												<td id="cliente_<?= $cliente->id_cliente?>">
+													<?=$cliente->nome_cliente?>
+												</td>
 												<td><?=$cliente->email_cliente ?></td>
 												<td><?=$cliente->cpf_cliente ?></td>
-												<td><i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?php echo $cliente->id?>)"></i></td>
-												<td><i class="fas fa-edit fa-lg text-info" onclick="editar(<?php echo $cliente->id?>, '<?php echo $cliente->cliente ?>')"></i></td>
+												<td><i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?=$cliente->id_cliente?>)"></i></td>
+												<td><i class="fas fa-edit fa-lg text-info" onclick="editar(<?=$cliente->id_cliente?>, '<?=$cliente->nome_cliente?>')")></i></td>
 											</tr>
 											
 										<?php }
