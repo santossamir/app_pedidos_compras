@@ -31,6 +31,7 @@
 			<div class="row">
 				<div class="col-md-3 menu">
 					<ul class="list-group">
+						<li class="list-group-item"><a href="novo_pedido.php">Novo pedido</a></li>
 						<li class="list-group-item"><a href="index.php">Todos os pedidos</a></li>
                         <li class="list-group-item active"><a href="novo_produto.php">Novo produto</a></li>
 						<li class="list-group-item"><a href="produtos.php">Todos os produtos</a></li>

@@ -36,7 +36,7 @@
 				let inputProduto = document.createElement('input');
 				inputProduto.type = 'text';
 				inputProduto.name = 'produto';
-				inputProduto.className = 'col-7 form-control';
+				inputProduto.className = 'col-6 form-control';
 				inputProduto.value = txt_produto; 
 
 				//Criar input hidden para guardar o id da tarefa
@@ -48,7 +48,7 @@
 				//Button para envio do form
 				let button = document.createElement('button');
 				button.type = 'submit';
-				button.className = 'col-7 btn btn-info';
+				button.className = 'col-3 btn btn-info';
 				button.innerHTML = 'Atualizar';
 
 				//Incluir inputTarefa no form
@@ -79,12 +79,13 @@
 			<div class="row">
 				<div class="col-sm-3 menu">
 				<ul class="list-group">
-						<li class="list-group-item"><a href="index.php">Todos os pedidos</a></li>
-                        <li class="list-group-item"><a href="novo_produto.php">Novo produto</a></li>
-						<li class="list-group-item active"><a href="produtos.php">Todos os produtos</a></li>
-                        <li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
-                        <li class="list-group-item"><a href="todos_clientes.php">Todos os clientes</a></li>
-					</ul>
+					<li class="list-group-item"><a href="novo_pedido.php">Novo pedido</a></li>
+					<li class="list-group-item"><a href="index.php">Todos os pedidos</a></li>
+					<li class="list-group-item"><a href="novo_produto.php">Novo produto</a></li>
+					<li class="list-group-item active"><a href="produtos.php">Todos os produtos</a></li>
+					<li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
+					<li class="list-group-item"><a href="todos_clientes.php">Todos os clientes</a></li>
+				</ul>
 				</div>
 
 				<div class="col-sm-9">

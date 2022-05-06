@@ -12,53 +12,53 @@
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 		<script>
-			function editar(id, txt_tarefa){
+			function editar(id_cliente, txt_pedido){
 				//Form de Edicação
 				let form = document.createElement('form');
-				form.action = 'tarefa_controller.php?acao=atualizar';
+				form.action = 'pedido_controller.php?acao=atualizar';
 				form.method = 'post';
 				form.className = 'row';
 
 				//Input para entrada de texto
-				let inputTarefa = document.createElement('input');
-				inputTarefa.type = 'text';
-				inputTarefa.name = 'tarefa';
-				inputTarefa.className = 'col-9 form-control';
-				inputTarefa.value = txt_tarefa; 
+				let inputPedido = document.createElement('input');
+				inputPedido.type = 'text';
+				inputPedido.name = 'pedido';
+				inputPedido.className = 'col-6 form-control';
+				inputPedido.value = txt_pedido; 
 
 				//Criar input hidden para guardar o id da tarefa
-				let inputId = document.createElement('input');
-				inputId.type = 'hidden';
-				inputId.name = 'id';
-				inputId.value = id;
+				let inputIdPedido = document.createElement('input');
+				inputIdPedido.type = 'hidden';
+				inputIdPedido.name = 'id_cliente';
+				inputIdPedido.value = id_cliente;
 				
 				//Button para envio do form
 				let button = document.createElement('button');
 				button.type = 'submit';
-				button.className = 'col-3 btn btn-info';
+				button.className = 'col-4 btn btn-info';
 				button.innerHTML = 'Atualizar';
 
 				//Incluir inputTarefa no form
-				form.appendChild(inputTarefa);
+				form.appendChild(inputPedido);
 
 				//Incluir inputId no form
-				form.appendChild(inputId);
+				form.appendChild(inputIdPedido);
 
 				//Incluir inputTarefa no form
 				form.appendChild(button);
 
 				//Selecionando a div tarefa
-				let tarefa = document.getElementById('tarefa_'+id);
+				let pedido = document.getElementById('pedido_'+id_cliente);
 
 				//Limpar texto da tarefa para incluir o form
-				tarefa.innerHTML = '';
+				pedido.innerHTML = '';
 
 				//Incluir form na pag
-				tarefa.insertBefore(form, tarefa[0]);
+				pedido.insertBefore(form, pedido[0]);
 			}
 
-			function remover(id){
-				location.href = 'todas_tarefas.php?acao=remover&id='+id;
+			function remover(id_cliente){
+				location.href = 'index.php?acao=remover&id_cliente='+id_cliente;
 			}
 
 			function marcarRealizada(id){
@@ -81,12 +81,13 @@
 			<div class="row">
 				<div class="col-sm-3 menu">
 				<ul class="list-group">
-						<li class="list-group-item active"><a href="index.php">Todos os pedidos</a></li>
-						<li class="list-group-item"><a href="novo_produto.php">Novo produto</a></li>
-						<li class="list-group-item"><a href="produtos.php">Todos os produtos</a></li>
-						<li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
-						<li class="list-group-item"><a href="todos_clientes.php">Todos os clientes</a></li>
-					</ul>
+					<li class="list-group-item"><a href="novo_pedido.php">Novo pedido</a></li>
+					<li class="list-group-item active"><a href="index.php">Todos os pedidos</a></li>
+					<li class="list-group-item"><a href="novo_produto.php">Novo produto</a></li>
+					<li class="list-group-item"><a href="produtos.php">Todos os produtos</a></li>
+					<li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
+					<li class="list-group-item"><a href="todos_clientes.php">Todos os clientes</a></li>
+				</ul>
 				</div>
 
 				<div class="col-sm-9">
@@ -112,10 +113,12 @@
 										?>
 											<tr>
 												<th><?=$pedido->id_cliente?></th>
-												<td><?=$pedido->pedido?> (<?= $pedido->status?>)</td>
+												<td id="pedido_<?= $pedido->id_cliente?>">
+													<?=$pedido->pedido?> (<?= $pedido->status?>)
+												</td>
 												<td><?=$pedido->data_pedido?></td>
-												<td><i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?php echo $pedido->id?>)"></i></td>
-												<td><i class="fas fa-edit fa-lg text-info" onclick="editar(<?php echo $pedido->id?>, '<?php echo $pedido->pedido ?>')"></i></td>
+												<td><i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?=$pedido->id_cliente?>)"></i></td>
+												<td><i class="fas fa-edit fa-lg text-info" onclick="editar(<?=$pedido->id_cliente?>, '<?=$pedido->pedido?>')"></i></td>
 												<td><i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?php echo $pedido->id_pedido?>)"></i></td>
 											</tr>
 										<?php }

@@ -50,12 +50,14 @@
 
 				//Selecionar elemento cliente
 				let cliente = document.getElementById('cliente_'+id_cliente);
+				//let email_cliente = document.getElementById('email_cliente_'+id_cliente);
 
 				//Limpar o texto cliente
 				cliente.innerHTML = '';
 
 				//incluir form na pagina
 				cliente.insertBefore(form, cliente[0])
+				//email_cliente.insertBefore(form, email_cliente[0])
 			}
 
 			function remover(id_cliente){
@@ -78,12 +80,13 @@
 			<div class="row">
 				<div class="col-sm-3 menu">
 				<ul class="list-group">
-						<li class="list-group-item"><a href="index.php">Todos os pedidos</a></li>
-						<li class="list-group-item"><a href="novo_produto.php">Novo produto</a></li>
-						<li class="list-group-item"><a href="produtos.php">Todos os produtos</a></li>
-						<li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
-                        <li class="list-group-item active"><a href="todos_clientes.php">Todos os clientes</a></li>
-					</ul>
+					<li class="list-group-item"><a href="novo_pedido.php">Novo pedido</a></li>
+					<li class="list-group-item"><a href="index.php">Todos os pedidos</a></li>
+					<li class="list-group-item"><a href="novo_produto.php">Novo produto</a></li>
+					<li class="list-group-item"><a href="produtos.php">Todos os produtos</a></li>
+					<li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
+					<li class="list-group-item active"><a href="todos_clientes.php">Todos os clientes</a></li>
+				</ul>
 				</div>
 
 				<div class="col-sm-9">
@@ -95,6 +98,7 @@
 								<table class="table table-borderless ">
 									<thead class="text-secondary">
 										<tr>
+											<th>Id. Cliente</th>
 											<th>Nome</th>
 											<th>E-mail</th>
 											<th>CPF</th>
@@ -107,10 +111,13 @@
 											foreach($clientes as $cliente){ 
 										?>
 											<tr>
+												<th>
+													<?=$cliente->id_cliente?>
+												</th>
 												<td id="cliente_<?= $cliente->id_cliente?>">
 													<?=$cliente->nome_cliente?>
 												</td>
-												<td>
+												<td id="email_cliente_<?= $cliente->id_cliente?>">
 													<?=$cliente->email_cliente?>
 												</td>
 												<td>
@@ -120,7 +127,7 @@
 													<i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?=$cliente->id_cliente?>)"></i>
 												</td>
 												<td>
-													<i class="fas fa-edit fa-lg text-info" onclick="editar(<?=$cliente->id_cliente?>, '<?=$cliente->nome_cliente?>')")></i>
+													<i class="fas fa-edit fa-lg text-info" onclick="editar(<?=$cliente->id_cliente?>, '<?=$cliente->nome_cliente?>','<?=$cliente->email_cliente?>')")></i>
 												</td>
 											</tr>
 											

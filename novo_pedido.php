@@ -22,7 +22,7 @@
 			if(isset($_GET['inclusao']) && $_GET['inclusao'] == 1){
 	    ?>
 			<div class="bg-primary pt-2 text-white d-flex justify-content-center">
-				<h5>Cliente cadastrado com sucesso!</h5>
+				<h5>Pedido cadastrado com sucesso!</h5>
 			</div>
 		<?php } 
 		?>
@@ -31,11 +31,11 @@
 			<div class="row">
 				<div class="col-md-3 menu">
 					<ul class="list-group">
-						<li class="list-group-item"><a href="novo_pedido.php">Novo pedido</a></li>
+                        <li class="list-group-item active"><a href="novo_pedido.php">Novo pedido</a></li>
 						<li class="list-group-item"><a href="index.php">Todos os pedidos</a></li>
 						<li class="list-group-item"><a href="novo_produto.php">Novo produto</a></li>
 						<li class="list-group-item"><a href="produtos.php">Todos os produtos</a></li>
-                        <li class="list-group-item active"><a href="novo_cliente.php">Novo cliente</a></li>
+                        <li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
                         <li class="list-group-item"><a href="todos_clientes.php">Todos os clientes</a></li>
 					</ul>
 				</div>
@@ -44,16 +44,14 @@
 					<div class="container pagina">
 						<div class="row">
 							<div class="col">
-								<h3 class="text-primary">Novo cliente</h3>
+								<h3 class="text-primary">Novo pedido</h3>
 								<hr />
 
-								<form method="post" action="cliente_controller.php?acao=inserir">
+								<form method="post" action="pedido_controller.php?acao=inserir">
 									<div class="form-group">
-										<label class="text-secondary">Dados do cliente:</label>
-										<input type="text" name="nome_cliente" class="form-control" placeholder="Nome" required>
-										<input type="text" name="email_cliente" class="form-control" placeholder="E-mail" required>
-										<input type="text" name="cpf_cliente" class="form-control" placeholder="000.000.000-00" required>
-
+										<label class="text-secondary">Dados do pedido:</label>
+										<input type="text" name="id_cliente" class="form-control" placeholder="Identificação do cliente" required>
+										<input type="text" name="pedido" class="form-control" placeholder="Pedido" required>
 									</div>
 
 									<button class="btn btn-primary">Cadastrar</button>

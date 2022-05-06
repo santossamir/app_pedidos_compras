@@ -3,15 +3,24 @@
 
         private $conexao;
         private $pedido;
+        private $id_cliente;
 
         public function __construct(Conexao $conexao, Pedido $pedido){
             $this->conexao = $conexao->conectar();
             $this->pedido = $pedido;
+            $this->id_cliente = $id_cliente;
         }
+        
         public function inserir(){
-            $query_inserir = 'insert into tb_pedidos(pedido)values(:pedido)';
+
+            $id_cliente = $_POST["id_cliente"];
+            $pedido = $_POST["pedido"];
+
+            $query_inserir = 'insert into tb_pedidos (id_cliente, pedido, data_pedido) values (:id_cliente, :pedido, now())';
             $stmt = $this->conexao->prepare($query_inserir);
-            $stmt->bindValue(':pedido', $this->pedido->__get('pedido'));
+           
+            $stmt->bindValue(':id_cliente', $id_cliente);
+            $stmt->bindValue(':pedido', $pedido);
             $stmt->execute();
         }
 
@@ -30,16 +39,16 @@
         }
 
         public function atualizar(){
-            $query = "update tb_pedidos set pedido = :pedido where id = :id_cliente";
-            $stmt = $this->conexao->prepare($query);
+            $query_atualizar = "update tb_pedidos set pedido = :pedido where id_cliente = :id_cliente";
+            $stmt = $this->conexao->prepare($query_atualizar);
             $stmt->bindValue(':pedido', $this->pedido->__get('pedido'));
             $stmt->bindValue(':id_cliente', $this->pedido->__get('id_cliente'));
             return $stmt->execute();
         }
 
         public function remover(){
-            $query = 'delete from tb_pedidos where id_cliente = :id_cliente';
-            $stmt = $this->conexao->prepare($query);
+            $query_remover = 'delete from tb_pedidos where id_cliente = :id_cliente';
+            $stmt = $this->conexao->prepare($query_remover);
             $stmt->bindValue(':id_cliente', $this->pedido->__get('id_cliente'));
             $stmt->execute();
         }

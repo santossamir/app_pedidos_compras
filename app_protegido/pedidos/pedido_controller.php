@@ -7,14 +7,16 @@
    $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
    
    if($acao == 'inserir'){
-
+      
       $pedido = new Pedido();
+      $id_cliente = new Pedido();
       
       $pedido->__set('pedido', $_POST['pedido']);
-
+      $id_cliente->__set('id_cliente', $_POST['id_cliente']);
+   
       $conexao = new Conexao();
 
-      $pedidoService = new PedidoService($conexao, $pedido);
+      $pedidoService = new PedidoService($conexao, $pedido, $id_cliente);
       $pedidoService->inserir();
 
       header('Location: novo_pedido.php?inclusao=1');
@@ -28,23 +30,24 @@
       $pedidos = $pedidoService->recuperar();
 
    } else if($acao == 'atualizar'){
-
+      
       $pedido = new Pedido();
 
-      $tarefa->__set('id_cliente', $_POST['id_cliente']);
-      $tarefa->__set('pedido', $_POST['pedido']);
+      $pedido->__set('id_cliente', $_POST['id_cliente']);
+      $pedido->__set('pedido', $_POST['pedido']);
 
       $conexao = new Conexao();
 
       $pedidoService = new PedidoService($conexao, $pedido);
-      if($tarefaService->atualizar()){
-
-         if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
+      if($pedidoService->atualizar()){
+         header('Location: index.php');
+      }
+         /*if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
             header('location: index.php');
          }else{
             header('location: todos_pedidos.php');
          }
-      };
+      };*/
 
    }else if($acao == 'remover'){
 
@@ -56,11 +59,13 @@
       $pedidoService = new PedidoService($conexao, $pedido);
       $pedidoService->remover();
 
-      if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
+      header('Location: index.php');
+
+      /*if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
          header('location: index.php');
       }else{
          header('location: todos_pedidos.php');
-      }
+      }*/
 
    }else if($acao == 'marcarRealizada'){
 
