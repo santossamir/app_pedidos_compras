@@ -62,15 +62,5 @@
          header('location: todos_clientes.php');
       }*/
 
-   } /*else if($acao == 'recuperarTarefasPendentes'){
-
-      $nome_cliente = new Cliente();
-      $nome_cliente->__set('id_status', 1);
-
-      $conexao = new Conexao();
-
-      $clienteService = new ClienteService($conexao, $nome_cliente);
-      $nome_cliente = $clienteService->recuperarTarefasPendentes();
-   }*/
-
+   } 
 ?>

@@ -56,7 +56,6 @@
 
 				//incluir form na pagina
 				cliente.insertBefore(form, cliente[0])
-	
 			}
 
 			function remover(id_cliente){
