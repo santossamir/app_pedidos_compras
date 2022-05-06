@@ -9,15 +9,17 @@
    if($acao == 'inserir'){
 
       $nome_produto = new Produto();
+      $valor_produto = new Produto();
       
       $nome_produto->__set('nome_produto', $_POST['nome_produto']);
+      $valor_produto->__set('valor_produto', $_POST['valor_produto']);
 
       $conexao = new Conexao();
 
-      $produtoService = new ProdutoService($conexao, $nome_produto);
+      $produtoService = new ProdutoService($conexao, $nome_produto, $valor_produto);
       $produtoService->inserir();
 
-      header('Location: produtos.php?inclusao=1');
+      header('Location: novo_produto.php?inclusao=1');
 
    }else if($acao == 'recuperar'){
 
@@ -30,21 +32,17 @@
    } else if($acao == 'atualizar'){
 
       $nome_produto = new Produto();
-
+   
       $nome_produto->__set('id_produto', $_POST['id_produto']);
-      $nome_produto->__set('nome_produto', $_POST['nome_produto']);
+      $nome_produto->__set('produto', $_POST['produto']);
 
       $conexao = new Conexao();
 
       $produtoService = new ProdutoService($conexao, $nome_produto);
-      if($produtoService->atualizar()){
 
-         if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
-            header('location: index.php');
-         }else{
-            header('location: produtos.php');
+      if($produtoService->atualizar()){
+         header('Location: produtos.php');
          }
-      };
 
    }else if($acao == 'remover'){
 
@@ -56,11 +54,13 @@
       $produtoService = new ProdutoService($conexao, $nome_produto);
       $produtoService->remover();
 
-      if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
+      header('Location: produtos.php');
+
+      /*if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
          header('location: index.php');
       }else{
          header('location: produtos.php');
-      }
+      }*/
 
    }
 

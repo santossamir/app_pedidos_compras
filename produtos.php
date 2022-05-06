@@ -25,7 +25,7 @@
 		</nav>
 
 		<script>
-			/*function editar(id, txt_tarefa){
+			function editar(id_produto, txt_produto){
 				//Form de Edicação
 				let form = document.createElement('form');
 				form.action = 'produto_controller.php?acao=atualizar';
@@ -33,50 +33,46 @@
 				form.className = 'row';
 
 				//Input para entrada de texto
-				let inputTarefa = document.createElement('input');
-				inputTarefa.type = 'text';
-				inputTarefa.name = 'tarefa';
-				inputTarefa.className = 'col-9 form-control';
-				inputTarefa.value = txt_tarefa; 
+				let inputProduto = document.createElement('input');
+				inputProduto.type = 'text';
+				inputProduto.name = 'produto';
+				inputProduto.className = 'col-7 form-control';
+				inputProduto.value = txt_produto; 
 
 				//Criar input hidden para guardar o id da tarefa
-				let inputId = document.createElement('input');
-				inputId.type = 'hidden';
-				inputId.name = 'id';
-				inputId.value = id;
+				let inputIdProduto = document.createElement('input');
+				inputIdProduto.type = 'hidden';
+				inputIdProduto.name = 'id_produto';
+				inputIdProduto.value = id_produto;
 				
 				//Button para envio do form
 				let button = document.createElement('button');
 				button.type = 'submit';
-				button.className = 'col-3 btn btn-info';
+				button.className = 'col-7 btn btn-info';
 				button.innerHTML = 'Atualizar';
 
 				//Incluir inputTarefa no form
-				form.appendChild(inputTarefa);
+				form.appendChild(inputProduto);
 
 				//Incluir inputId no form
-				form.appendChild(inputId);
+				form.appendChild(inputIdProduto);
 
 				//Incluir inputTarefa no form
 				form.appendChild(button);
 
 				//Selecionando a div tarefa
-				let tarefa = document.getElementById('tarefa_'+id);
+				let produto = document.getElementById('produto_'+id_produto);
 
 				//Limpar texto da tarefa para incluir o form
-				tarefa.innerHTML = '';
+				produto.innerHTML = '';
 
 				//Incluir form na pag
-				tarefa.insertBefore(form, tarefa[0]);
+				produto.insertBefore(form, produto[0]);
 			}
 
-			function remover(id){
-				location.href = 'produtos.php?acao=remover&id_produto='+id;
+			function remover(id_produto){
+				location.href = 'produtos.php?acao=remover&id_produto='+id_produto;
 			}
-
-			function marcarRealizada(id){
-				location.href = 'todas_tarefas.php?acao=marcarRealizada&id='+id;
-			}*/
 		</script>
 
 		<div class="container app">
@@ -84,7 +80,8 @@
 				<div class="col-sm-3 menu">
 				<ul class="list-group">
 						<li class="list-group-item"><a href="index.php">Todos os pedidos</a></li>
-                        <li class="list-group-item active"><a href="produtos.php">Produtos</a></li>
+                        <li class="list-group-item"><a href="novo_produto.php">Novo produto</a></li>
+						<li class="list-group-item active"><a href="produtos.php">Todos os produtos</a></li>
                         <li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
                         <li class="list-group-item"><a href="todos_clientes.php">Todos os clientes</a></li>
 					</ul>
@@ -112,10 +109,12 @@
 										?>
 											<tr>
 												<th><?=$produto->id_produto?></th>
-												<td><?=$produto->nome_produto?> </td>
+												<td id="produto_<?= $produto->id_produto?>">
+													<?=$produto->nome_produto?>
+												</td>
 												<td>R$ <?=$produto->valor_produto?></td>
-												<td><i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?php echo $produto->id?>)"></i></td>
-												<td><i class="fas fa-edit fa-lg text-info" onclick="editar(<?php echo $produto->id?>, '<?php echo $produto->produto ?>')"></i></td>
+												<td><i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?=$produto->id_produto?>)"></i></td>
+												<td><i class="fas fa-edit fa-lg text-info" onclick="editar(<?=$produto->id_produto?>, '<?=$produto->nome_produto ?>')"></i></td>
 											</tr>
 										<?php }
 										?>
@@ -129,12 +128,3 @@
 		</div>
 	</body>
 </html>
-
- <!--							
-			<?php if($tarefa->status == 'pendente'){?>
-				<i class="fas fa-edit fa-lg text-info" onclick="editar(<?php echo $produto->id_produto?>, '<?php echo $produto->produto ?>')"></i>
-				<i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?php echo $produto->id_produto?>)"></i>
-			<?php } ?>
-		</div>
-	</div>
- -->

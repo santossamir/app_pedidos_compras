@@ -79,7 +79,8 @@
 				<div class="col-sm-3 menu">
 				<ul class="list-group">
 						<li class="list-group-item"><a href="index.php">Todos os pedidos</a></li>
-						<li class="list-group-item"><a href="produtos.php">Produtos</a></li>
+						<li class="list-group-item"><a href="novo_produto.php">Novo produto</a></li>
+						<li class="list-group-item"><a href="produtos.php">Todos os produtos</a></li>
 						<li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
                         <li class="list-group-item active"><a href="todos_clientes.php">Todos os clientes</a></li>
 					</ul>
