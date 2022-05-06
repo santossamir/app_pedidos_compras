@@ -5,7 +5,7 @@
    require "/home/samir/Newtab Academy/PHP/app_pedidos_compras/app_protegido/conexao.php";
 
    $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
-   
+
    if($acao == 'inserir'){
 
       $nome_cliente = new Cliente();
@@ -46,7 +46,6 @@
       };
 
    }else if($acao == 'remover'){
-
       $nome_cliente = new Cliente();
       $nome_cliente->__set('id_cliente', $_GET['id_cliente']);
 
@@ -55,13 +54,15 @@
       $clienteService = new ClienteService($conexao, $nome_cliente);
       $clienteService->remover();
 
-      if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
+      header('Location: todos_clientes.php');
+
+      /*if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
          header('location: index.php');
       }else{
          header('location: todos_clientes.php');
-      }
+      }*/
 
-   }else if($acao == 'recuperarTarefasPendentes'){
+   } /*else if($acao == 'recuperarTarefasPendentes'){
 
       $nome_cliente = new Cliente();
       $nome_cliente->__set('id_status', 1);
@@ -70,6 +71,6 @@
 
       $clienteService = new ClienteService($conexao, $nome_cliente);
       $nome_cliente = $clienteService->recuperarTarefasPendentes();
-   }
+   }*/
 
 ?>

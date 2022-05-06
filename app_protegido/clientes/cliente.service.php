@@ -52,8 +52,8 @@
         }
 
         public function remover(){ //delete
-            $query = 'delete from tb_clientes where id_cliente = :id_cliente';
-            $stmt = $this->conexao->prepare($query);
+            $query_remover = 'delete from tb_clientes where id_cliente = :id_cliente';
+            $stmt = $this->conexao->prepare($query_remover);
             $stmt->bindValue(':id_cliente', $this->nome_cliente->__get('id_cliente'));
             $stmt->execute();
         }

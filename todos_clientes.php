@@ -59,8 +59,8 @@
 	
 			}
 
-			function remover(id_cliente, txt_cliente){
-				location.href = 'todos_clientes.php?acao=remover&id_cliente='+id;
+			function remover(id_cliente){
+				location.href = 'todos_clientes.php?acao=remover&id_cliente='+id_cliente;
 			}
 		</script>
 	</head>
