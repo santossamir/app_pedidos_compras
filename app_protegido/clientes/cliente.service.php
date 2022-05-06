@@ -30,7 +30,7 @@
             $query_consultar = '
                 select 
                    id_cliente,
-                    nome_cliente,
+                   nome_cliente,
                    email_cliente,
                    cpf_cliente
                 from
@@ -42,10 +42,12 @@
         }
 
         public function atualizar(){ //update
-            $query_atualizar = "update tb_clientes set nome_cliente = :nome_cliente where id = :id_cliente";
+            $query_atualizar = "update tb_clientes set nome_cliente = :cliente where id_cliente = :id_cliente";
             $stmt = $this->conexao->prepare($query_atualizar);
-            $stmt->bindValue(':nome_cliente', $this->nome_cliente->__get('nome_cliente'));
-            $stmt->bindValue(':id_cliente', $this->nome_cliente->__get('id_cliente'));
+            $nome_cliente = $_POST['cliente'];
+            $id_cliente = $_POST['id_cliente'];
+            $stmt->bindValue(':cliente', $nome_cliente);
+            $stmt->bindValue(':id_cliente', $id_cliente);
             return $stmt->execute();
         }
 

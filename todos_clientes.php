@@ -16,7 +16,7 @@
 			function editar(id_cliente, txt_cliente){
 				//Form de Edicação
 				let form = document.createElement('form');
-				form.action = '#' /*'cliente_controller.php?acao=atualizar'*/;
+				form.action = 'cliente_controller.php?acao=atualizar';
 				form.method = 'post';
 				form.className = 'row';
 
@@ -59,12 +59,8 @@
 	
 			}
 
-			function remover(id, txt_cliente){
+			function remover(id_cliente, txt_cliente){
 				location.href = 'todos_clientes.php?acao=remover&id_cliente='+id;
-			}
-
-			function marcarRealizada(id){
-				location.href = 'todas_tarefas.php?acao=marcarRealizada&id='+id;
 			}
 		</script>
 	</head>
@@ -114,10 +110,18 @@
 												<td id="cliente_<?= $cliente->id_cliente?>">
 													<?=$cliente->nome_cliente?>
 												</td>
-												<td><?=$cliente->email_cliente ?></td>
-												<td><?=$cliente->cpf_cliente ?></td>
-												<td><i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?=$cliente->id_cliente?>)"></i></td>
-												<td><i class="fas fa-edit fa-lg text-info" onclick="editar(<?=$cliente->id_cliente?>, '<?=$cliente->nome_cliente?>')")></i></td>
+												<td>
+													<?=$cliente->email_cliente?>
+												</td>
+												<td>
+													<?=$cliente->cpf_cliente?>
+												</td>
+												<td>
+													<i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?=$cliente->id_cliente?>)"></i>
+												</td>
+												<td>
+													<i class="fas fa-edit fa-lg text-info" onclick="editar(<?=$cliente->id_cliente?>, '<?=$cliente->nome_cliente?>')")></i>
+												</td>
 											</tr>
 											
 										<?php }
@@ -132,13 +136,3 @@
 		</div>
 	</body>
 </html>
-
-<!--
-	<div class="row mb-3 d-flex align-items-center tarefa">
-			<?php if($tarefa->status == 'pendente'){?>
-				<i class="fas fa-edit fa-lg text-info" onclick="editar(<?php echo $cliente->id_cliente ?>, '<?php echo $cliente->pedido?>')"></i>
-				<i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?php echo $cliente->id_cliente?>)"></i>
-			<?php } ?>
-		</div>
-	</div>
--->

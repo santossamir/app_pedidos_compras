@@ -32,22 +32,17 @@
       $clientes = $clienteService->recuperar();
 
    } else if($acao == 'atualizar'){
-
+ 
       $nome_cliente = new Cliente();
 
       $nome_cliente->__set('id_cliente', $_POST['id_cliente']);
-      $nome_cliente->__set('nome_cliente', $_POST['nome_cliente']);
+      $nome_cliente->__set('cliente', $_POST['cliente']);
 
       $conexao = new Conexao();
 
       $clienteService = new ClienteService($conexao, $nome_cliente);
       if($clienteService->atualizar()){
-
-         if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
-            header('location: index.php');
-         }else{
-            header('location: todos_clientes.php');
-         }
+         header('Location: todos_clientes.php');
       };
 
    }else if($acao == 'remover'){
@@ -59,24 +54,6 @@
 
       $clienteService = new ClienteService($conexao, $nome_cliente);
       $clienteService->remover();
-
-      if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
-         header('location: index.php');
-      }else{
-         header('location: todos_clientes.php');
-      }
-
-   }else if($acao == 'marcarRealizada'){
-
-      $nome_cliente = new Cliente();
-
-      $nome_cliente->__set('id_cliente', $_GET['id-cliente']);
-      $nome_cliente->__set('id_status', 2);
-
-      $conexao = new Conexao();
-
-      $clienteService = new ClienteService($conexao, $nome_cliente);
-      $clienteService->marcarRealizada();
 
       if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
          header('location: index.php');
