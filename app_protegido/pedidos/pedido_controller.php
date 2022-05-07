@@ -67,23 +67,25 @@
          header('location: todos_pedidos.php');
       }*/
 
-   }else if($acao == 'marcarRealizada'){
+   }else if($acao == 'marcarPago'){
 
       $pedido = new Pedido();
 
-      $pedido->__set('id', $_GET['id_cliente']);
+      $pedido->__set('id_cliente', $_GET['id_cliente']);
       $pedido->__set('id_status', 2);
 
       $conexao = new Conexao();
 
       $pedidoService = new PedidoService($conexao, $pedido);
-      $pedidoService->marcarRealizada();
+      $pedidoService->marcarPago();
 
-      if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
+      header('location: index.php');
+
+      /*if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
          header('location: index.php');
       }else{
-         header('location: todas_tarefas.php');
-      }
+         header('location: index.php');
+      }*/
 
    }
 

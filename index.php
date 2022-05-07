@@ -11,8 +11,10 @@
 		<link rel="stylesheet" href="css/estilo.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+		
 		<script>
 			function editar(id_cliente, txt_pedido){
+				
 				//Form de Edicação
 				let form = document.createElement('form');
 				form.action = 'pedido_controller.php?acao=atualizar';
@@ -61,8 +63,8 @@
 				location.href = 'index.php?acao=remover&id_cliente='+id_cliente;
 			}
 
-			function marcarRealizada(id){
-				location.href = 'todas_tarefas.php?acao=marcarRealizada&id='+id;
+			function marcarPago(id_cliente){
+				location.href = 'index.php?acao=marcarPago&id_cliente='+id_cliente;
 			}
 		</script>
 	</head>
@@ -80,14 +82,14 @@
 		<div class="container app">
 			<div class="row">
 				<div class="col-sm-3 menu">
-				<ul class="list-group">
-					<li class="list-group-item"><a href="novo_pedido.php">Novo pedido</a></li>
-					<li class="list-group-item active"><a href="index.php">Todos os pedidos</a></li>
-					<li class="list-group-item"><a href="novo_produto.php">Novo produto</a></li>
-					<li class="list-group-item"><a href="produtos.php">Todos os produtos</a></li>
-					<li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
-					<li class="list-group-item"><a href="todos_clientes.php">Todos os clientes</a></li>
-				</ul>
+					<ul class="list-group">
+						<li class="list-group-item"><a href="novo_pedido.php">Novo pedido</a></li>
+						<li class="list-group-item active"><a href="index.php">Todos os pedidos</a></li>
+						<li class="list-group-item"><a href="novo_produto.php">Novo produto</a></li>
+						<li class="list-group-item"><a href="produtos.php">Todos os produtos</a></li>
+						<li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
+						<li class="list-group-item"><a href="todos_clientes.php">Todos os clientes</a></li>
+					</ul>
 				</div>
 
 				<div class="col-sm-9">
@@ -118,8 +120,13 @@
 												</td>
 												<td><?=$pedido->data_pedido?></td>
 												<td><i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?=$pedido->id_cliente?>)"></i></td>
-												<td><i class="fas fa-edit fa-lg text-info" onclick="editar(<?=$pedido->id_cliente?>, '<?=$pedido->pedido?>')"></i></td>
-												<td><i class="fas fa-check-square fa-lg text-success" onclick="marcarRealizada(<?php echo $pedido->id_pedido?>)"></i></td>
+												
+												<?php if($pedido->status == 'Aberto'){?>
+													<td><i class="fas fa-edit fa-lg text-info" onclick="editar(<?=$pedido->id_cliente?>, '<?=$pedido->pedido?>')"></i></td>
+													<td><i class="fas fa-check-square fa-lg text-success" onclick="marcarPago(<?=$pedido->id_cliente?>)"></i></td>
+												<?php }
+												?>
+
 											</tr>
 										<?php }
 										?>

@@ -52,5 +52,13 @@
             $stmt->bindValue(':id_cliente', $this->pedido->__get('id_cliente'));
             $stmt->execute();
         }
+
+        public function marcarPago(){
+            $query_atualizar = "update tb_pedidos set id_status = :id_status where id_cliente = :id_cliente";
+            $stmt = $this->conexao->prepare($query_atualizar);
+            $stmt->bindValue(':id_status', $this->pedido->__get('id_status'));
+            $stmt->bindValue(':id_cliente', $this->pedido->__get('id_cliente'));
+            return $stmt->execute();
+        }
     }
 ?>
