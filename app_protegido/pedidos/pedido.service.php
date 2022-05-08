@@ -27,7 +27,7 @@
         public function recuperar(){
             $query_consultar = '
                 select 
-                   c.nome_cliente, b.nome_produto, p.data_pedido, s.status 
+                   p.id_cliente, c.nome_cliente, b.nome_produto,  s.status, p.data_pedido
                 from
                    tb_pedidos as p
                    left join tb_clientes as c on (p.id_cliente = c.id_cliente)

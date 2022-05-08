@@ -101,7 +101,8 @@
 								<table class="table table-borderless">
 									<thead class="text-secondary">
 										<tr>
-											<th>Id. do Cliente</th>
+											<th>Id. Cliente</th>
+											<th>Nome</th>
 											<th>Pedido</th>
 											<th>Data</th>
 											<th>Excluir</th>
@@ -114,7 +115,8 @@
 											foreach($pedidos as $pedido){ 
 										?>
 											<tr>
-												<th><?=$pedido->nome_cliente?></th>
+												<th><?=$pedido->id_cliente?></th>
+												<td><?=$pedido->nome_cliente?></td>
 												<td id="pedido_<?= $pedido->id_cliente?>">
 													<?=$pedido->nome_produto?> (<?= $pedido->status?>)
 												</td>
