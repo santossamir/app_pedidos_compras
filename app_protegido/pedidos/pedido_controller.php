@@ -39,15 +39,10 @@
       $conexao = new Conexao();
 
       $pedidoService = new PedidoService($conexao, $pedido);
+      
       if($pedidoService->atualizar()){
          header('Location: index.php');
       }
-         /*if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
-            header('location: index.php');
-         }else{
-            header('location: todos_pedidos.php');
-         }
-      };*/
 
    }else if($acao == 'remover'){
 
@@ -60,12 +55,6 @@
       $pedidoService->remover();
 
       header('Location: index.php');
-
-      /*if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
-         header('location: index.php');
-      }else{
-         header('location: todos_pedidos.php');
-      }*/
 
    }else if($acao == 'marcarPago'){
 
@@ -80,13 +69,6 @@
       $pedidoService->marcarPago();
 
       header('location: index.php');
-
-      /*if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
-         header('location: index.php');
-      }else{
-         header('location: index.php');
-      }*/
-
    }
 
 ?>

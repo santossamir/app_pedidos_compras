@@ -127,7 +127,7 @@
 													<i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?=$cliente->id_cliente?>)"></i>
 												</td>
 												<td>
-													<i class="fas fa-edit fa-lg text-info" onclick="editar(<?=$cliente->id_cliente?>, '<?=$cliente->nome_cliente?>','<?=$cliente->email_cliente?>')")></i>
+													<i class="fas fa-edit fa-lg text-info" onclick="editar(<?=$cliente->id_cliente?>, '<?=$cliente->nome_cliente?>','<?=$cliente->email_cliente?>')"></i>
 												</td>
 											</tr>
 											

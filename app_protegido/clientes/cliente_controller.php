@@ -55,12 +55,5 @@
       $clienteService->remover();
 
       header('Location: todos_clientes.php');
-
-      /*if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
-         header('location: index.php');
-      }else{
-         header('location: todos_clientes.php');
-      }*/
-
    } 
 ?>

@@ -55,13 +55,6 @@
       $produtoService->remover();
 
       header('Location: produtos.php');
-
-      /*if(isset($_GET['pag']) && $_GET['pag'] == 'index'){
-         header('location: index.php');
-      }else{
-         header('location: produtos.php');
-      }*/
-
    }
 
 ?>
