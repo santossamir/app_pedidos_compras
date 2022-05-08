@@ -3,6 +3,7 @@
         private $id_pedido;
         private $id_cliente;
         private $pedido;
+        private $id_produto;
         private $data_pedido;
         private $id_status;
 

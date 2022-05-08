@@ -12,25 +12,27 @@
         }
         
         public function inserir(){
-
+            print_r($_POST);
             $id_cliente = $_POST["id_cliente"];
-            $pedido = $_POST["pedido"];
+            $id_produto = $_POST["pedido"];
 
-            $query_inserir = 'insert into tb_pedidos (id_cliente, pedido, data_pedido) values (:id_cliente, :pedido, now())';
+            $query_inserir = 'insert into tb_pedidos (id_cliente, id_produto, data_pedido) values (:id_cliente, :pedido, now())';
             $stmt = $this->conexao->prepare($query_inserir);
            
             $stmt->bindValue(':id_cliente', $id_cliente);
-            $stmt->bindValue(':pedido', $pedido);
+            $stmt->bindValue(':pedido', $id_produto);
             $stmt->execute();
         }
 
         public function recuperar(){
             $query_consultar = '
                 select 
-                   p.id_cliente, p.pedido, p.data_pedido, s.status 
+                   c.nome_cliente, b.nome_produto, p.data_pedido, s.status 
                 from
                    tb_pedidos as p
+                   left join tb_clientes as c on (p.id_cliente = c.id_cliente)
                    left join tb_status as s on (p.id_status = s.id_status)
+                   left join tb_produtos as b on (p.id_produto = b.id_produto)
             ';
             $stmt = $this->conexao->prepare($query_consultar);
             $stmt->execute();

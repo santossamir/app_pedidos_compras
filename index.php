@@ -114,9 +114,9 @@
 											foreach($pedidos as $pedido){ 
 										?>
 											<tr>
-												<th><?=$pedido->id_cliente?></th>
+												<th><?=$pedido->nome_cliente?></th>
 												<td id="pedido_<?= $pedido->id_cliente?>">
-													<?=$pedido->pedido?> (<?= $pedido->status?>)
+													<?=$pedido->nome_produto?> (<?= $pedido->status?>)
 												</td>
 												<td><?=$pedido->data_pedido?></td>
 												<td><i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?=$pedido->id_cliente?>)"></i></td>

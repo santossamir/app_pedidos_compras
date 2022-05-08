@@ -51,7 +51,7 @@
 									<div class="form-group">
 										<label class="text-secondary">Dados do pedido:</label>
 										<input type="text" name="id_cliente" class="form-control" placeholder="Identificação do cliente" required>
-										<input type="text" name="pedido" class="form-control" placeholder="Pedido" required>
+										<input type="text" name="pedido" class="form-control" placeholder="Identificação do produto" required>
 									</div>
 
 									<button class="btn btn-primary">Cadastrar</button>
