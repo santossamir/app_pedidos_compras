@@ -18,6 +18,33 @@
 				</a>
 			</div>
 		</nav>
+
+		<script>
+			let writingPattern = /[^0-9]/;
+
+			function currencyFormat(moeda){
+				if(writingPattern.test(moeda.key)){
+					moeda.preventDefault();
+					return;
+				}
+				
+				if(!moeda.target.value) return;
+
+				valor = moeda.target.value.toString();
+				valor = valor.replace(/[\D]+/g, '');
+				valor = valor.replace(/([0-9]{1})$/g, ",$1");
+
+				if(valor.length >= 6){
+					while(/([0-9]{4})[,|\.]/g.test(valor)){
+						valor = valor.replace(/([0-9]{1})$/g, ",$1");
+						valor = valor.replace(/([0-9]{3})[,|\.]/g, ".$1");
+					}
+				}
+
+				moeda.target.value = valor;
+			}
+		</script>
+		
 		<?php 
 			if(isset($_GET['inclusao']) && $_GET['inclusao'] == 1){
 	    ?>
@@ -51,7 +78,7 @@
 									<div class="form-group">
 										<label class="text-secondary">Dados do produto:</label>
 										<input type="text" name="nome_produto" class="form-control" placeholder="Nome do produto" required>
-										<input type="text" name="valor_produto" class="form-control" placeholder="Valor" required>
+										<input type="text" name="valor_produto" class="form-control" placeholder="Valor" onkeypress="currencyFormat(event)" required>
 
 									</div>
 

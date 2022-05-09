@@ -18,6 +18,26 @@
 				</a>
 			</div>
 		</nav>
+		<script>
+			let writingPattern = /[^0-9]/;
+
+			function cpfFormat(digitos){
+				if(writingPattern.test(digitos.key)){
+					digitos.preventDefault();
+					return;
+				}
+
+				if(!digitos.target.value) return;
+
+				valor = digitos.target.value.toString();
+				valor = valor.replace(/\D/g,"")                    
+				valor = valor.replace(/(\d{3})(\d)/,"$1.$2")      
+				valor = valor.replace(/(\d{3})(\d)/,"$1.$2")      									          
+				valor = valor.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
+				
+				digitos.target.value = valor;
+			}
+		</script>
 		<?php 
 			if(isset($_GET['inclusao']) && $_GET['inclusao'] == 1){
 	    ?>
@@ -52,7 +72,7 @@
 										<label class="text-secondary">Dados do cliente:</label>
 										<input type="text" name="nome_cliente" class="form-control" placeholder="Nome" required>
 										<input type="text" name="email_cliente" class="form-control" placeholder="E-mail" required>
-										<input type="text" name="cpf_cliente" class="form-control" placeholder="000.000.000-00" required>
+										<input type="text" name="cpf_cliente" class="form-control" placeholder="CPF" onkeypress="cpfFormat(event)" required>
 
 									</div>
 
