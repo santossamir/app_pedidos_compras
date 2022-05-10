@@ -41,7 +41,7 @@
       $produtoService = new ProdutoService($conexao, $nome_produto);
 
       if($produtoService->atualizar()){
-         header('Location: produtos.php');
+         header('Location: todos_produtos.php');
          }
 
    }else if($acao == 'remover'){
@@ -54,7 +54,7 @@
       $produtoService = new ProdutoService($conexao, $nome_produto);
       $produtoService->remover();
 
-      header('Location: produtos.php');
+      header('Location: todos_produtos.php');
    }
 
 ?>

@@ -34,7 +34,7 @@
                         <li class="list-group-item active"><a href="novo_pedido.php">Novo pedido</a></li>
 						<li class="list-group-item"><a href="index.php">Todos os pedidos</a></li>
 						<li class="list-group-item"><a href="novo_produto.php">Novo produto</a></li>
-						<li class="list-group-item"><a href="produtos.php">Todos os produtos</a></li>
+						<li class="list-group-item"><a href="todos_produtos.php">Todos os produtos</a></li>
                         <li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
                         <li class="list-group-item"><a href="todos_clientes.php">Todos os clientes</a></li>
 					</ul>
