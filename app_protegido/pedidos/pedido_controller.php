@@ -8,6 +8,13 @@
    
    if($acao == 'inserir'){
       
+      if($_POST['pedido'] == ' ' || $_POST['id_cliente'] == ' '){
+         
+         header('Location: novo_pedido.php?inclusao=2');
+         
+         return $acao = ' ';
+      } 
+
       $id_produto = new Pedido();
       $id_cliente = new Pedido();
       

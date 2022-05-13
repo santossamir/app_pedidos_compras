@@ -8,6 +8,13 @@
    
    if($acao == 'inserir'){
 
+      if($_POST['nome_produto'] == ' ' || $_POST['valor_produto'] == ' '){
+         
+         header('Location: novo_produto.php?inclusao=2');
+         
+         return $acao = ' ';
+      }
+
       $nome_produto = new Produto();
       $valor_produto = new Produto();
       
