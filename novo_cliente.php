@@ -77,6 +77,16 @@
 									</div>
 
 									<button class="btn btn-primary">Cadastrar</button>
+									
+									<?php if(isset($_GET['inclusao']) && $_GET['inclusao'] == 2) { ?>
+
+											<small class="form-text text-danger">
+											<h4>*Erro ao tentar realizar cadastro. Verifique se os
+											campos foram preenchidos corretamente.</4>
+											</small>
+
+									<?php } ?>
+
 								</form>
 							</div>
 						</div>

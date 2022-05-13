@@ -71,7 +71,7 @@
 			}
 
 			function remover(id_produto){
-				location.href = 'produtos.php?acao=remover&id_produto='+id_produto;
+				location.href = 'todos_produtos.php?acao=remover&id_produto='+id_produto;
 			}
 		</script>
 

@@ -5,8 +5,16 @@
    require "./app_protegido/conexao.php";
 
    $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
+   $erro = false;
 
    if($acao == 'inserir'){
+      
+      if($_POST['nome_cliente'] == ' ' || $_POST['email_cliente'] == ' ' || $_POST['cpf_cliente'] == ' '){
+         
+         header('Location: novo_cliente.php?inclusao=2');
+         
+         return $acao = ' ';
+      }
 
       $nome_cliente = new Cliente();
       $email_cliente = new Cliente();
