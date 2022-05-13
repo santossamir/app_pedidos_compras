@@ -2,7 +2,7 @@
    
    require "cliente.model.php";
    require "cliente.service.php";
-   require "/home/samir/Newtab Academy/PHP/app_pedidos_compras/app_protegido/conexao.php";
+   require "./app_protegido/conexao.php";
 
    $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
 
