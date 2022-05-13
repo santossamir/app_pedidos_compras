@@ -11,9 +11,10 @@
 		<link rel="stylesheet" href="css/estilo.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script>
 			function editar(id_cliente, txt_cliente){
+		
 				//Form de Edicação
 				let form = document.createElement('form');
 				form.action = 'cliente_controller.php?acao=atualizar';
@@ -50,14 +51,12 @@
 
 				//Selecionar elemento cliente
 				let cliente = document.getElementById('cliente_'+id_cliente);
-				//let email_cliente = document.getElementById('email_cliente_'+id_cliente);
-
+				
 				//Limpar o texto cliente
 				cliente.innerHTML = '';
 
 				//incluir form na pagina
 				cliente.insertBefore(form, cliente[0])
-				//email_cliente.insertBefore(form, email_cliente[0])
 			}
 
 			function remover(id_cliente){
@@ -83,7 +82,7 @@
 					<li class="list-group-item"><a href="novo_pedido.php">Novo pedido</a></li>
 					<li class="list-group-item"><a href="index.php">Todos os pedidos</a></li>
 					<li class="list-group-item"><a href="novo_produto.php">Novo produto</a></li>
-					<li class="list-group-item"><a href="produtos.php">Todos os produtos</a></li>
+					<li class="list-group-item"><a href="todos_produtos.php">Todos os produtos</a></li>
 					<li class="list-group-item"><a href="novo_cliente.php">Novo cliente</a></li>
 					<li class="list-group-item active"><a href="todos_clientes.php">Todos os clientes</a></li>
 				</ul>
