@@ -18,6 +18,18 @@
 				</a>
 			</div>
 		</nav>
+		<script>
+			let writingPattern = /[^0-9]/;
+
+			function apenasNumeros(numeros){
+
+				if(writingPattern.test(numeros.key)){
+					numeros.preventDefault();
+					return;
+				}
+			}	
+		</script>
+
 		<?php 
 			if(isset($_GET['inclusao']) && $_GET['inclusao'] == 1){
 	    ?>
@@ -50,8 +62,8 @@
 								<form method="post" action="pedido_controller.php?acao=inserir">
 									<div class="form-group">
 										<label class="text-secondary">Dados do pedido:</label>
-										<input type="text" name="id_cliente" class="form-control" placeholder="Identificação do cliente" required>
-										<input type="text" name="pedido" class="form-control" placeholder="Identificação do produto" required>
+										<input type="text" name="id_cliente" class="form-control" placeholder="Identificação do cliente" onkeypress="apenasNumeros(event)" required>
+										<input type="text" name="pedido" class="form-control" placeholder="Identificação do produto" onkeypress="apenasNumeros(event)" required>
 									</div>
 
 									<button class="btn btn-primary">Cadastrar</button>
