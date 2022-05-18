@@ -33,6 +33,7 @@
                    left join tb_clientes as c on (p.id_cliente = c.id_cliente)
                    left join tb_status as s on (p.id_status = s.id_status)
                    left join tb_produtos as b on (p.id_produto = b.id_produto)
+
             ';
             $stmt = $this->conexao->prepare($query_consultar);
             $stmt->execute();

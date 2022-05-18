@@ -4,7 +4,7 @@
         private $host = 'localhost';
         private $dbname = 'db_app_pedidos_compras';
         private $user = 'root';
-        private $pass = 'S@mir123';
+        private $pass = '';
 
         public function conectar(){
             try{

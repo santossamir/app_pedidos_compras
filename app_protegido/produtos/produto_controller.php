@@ -8,11 +8,17 @@
    
    if($acao == 'inserir'){
 
-      if($_POST['nome_produto'] == ' ' || $_POST['valor_produto'] == ' '){
+      foreach ( $_POST as $chave => $valor ) {
+         // Remove todas as tags HTML e remove os espaços em branco do valor
+         $$chave = trim( strip_tags( $valor ) );
          
-         header('Location: novo_produto.php?inclusao=2');
+         // Verifica se tem algum valor nulo
+         if ( empty ( $valor ) ) {
+            
+            header('Location: novo_produto.php?inclusao=2');
          
-         return $acao = ' ';
+            return $acao = ' ';
+         }
       }
 
       $nome_produto = new Produto();

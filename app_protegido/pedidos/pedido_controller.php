@@ -8,12 +8,18 @@
    
    if($acao == 'inserir'){
       
-      if($_POST['pedido'] == ' ' || $_POST['id_cliente'] == ' '){
+      foreach ( $_POST as $chave => $valor ) {
+         // Remove todas as tags HTML e remove os espaços em branco do valor
+         $$chave = trim( strip_tags( $valor ) );
          
-         header('Location: novo_pedido.php?inclusao=2');
+         // Verifica se tem algum valor nulo
+         if ( empty ( $valor ) ) {
+            
+            header('Location: novo_pedido.php?inclusao=2');
          
-         return $acao = ' ';
-      } 
+            return $acao = ' ';
+         }
+      }
 
       $id_produto = new Pedido();
       $id_cliente = new Pedido();

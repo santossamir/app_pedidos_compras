@@ -5,15 +5,36 @@
    require "./app_protegido/conexao.php";
 
    $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
-   $erro = false;
 
    if($acao == 'inserir'){
       
-      if($_POST['nome_cliente'] == ' ' || $_POST['email_cliente'] == ' ' || $_POST['cpf_cliente'] == ' '){
+      foreach ( $_POST as $chave => $valor ) {
+         // Remove todas as tags HTML e emove os espaços em branco do valor
+         $$chave = trim( strip_tags( $valor ) );
+         
+         // Verifica se tem algum valor nulo
+         if ( empty ( $valor ) ) {
+            
+            header('Location: novo_cliente.php?inclusao=2');
+         
+            return $acao = ' ';
+         }
+      }
+
+      // Verifica se $email_cliente realmente existe e se é um email. 
+      if ( (!isset( $email_cliente ) || !filter_var( $email_cliente, FILTER_VALIDATE_EMAIL))) {
          
          header('Location: novo_cliente.php?inclusao=2');
          
-         return $acao = ' ';
+            return $acao = ' ';
+      }
+      
+      // Verifica se $nome_cliene realmente existe e se é um número.
+      if ( (!isset( $nome_cliente ) || is_numeric( $nome_cliente))) {
+
+         header('Location: novo_cliente.php?inclusao=2');
+         
+            return $acao = ' ';
       }
 
       $nome_cliente = new Cliente();
