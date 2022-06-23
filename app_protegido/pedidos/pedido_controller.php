@@ -58,9 +58,9 @@
       }
 
    }else if($acao == 'remover'){
-
+      
       $pedido = new Pedido();
-      $pedido->__set('id_cliente', $_GET['id_cliente']);
+      $pedido->__set('id_pedido', $_GET['id_pedido']);
 
       $conexao = new Conexao();
 
@@ -73,7 +73,7 @@
 
       $pedido = new Pedido();
 
-      $pedido->__set('id_cliente', $_GET['id_cliente']);
+      $pedido->__set('id_pedido', $_GET['id_pedido']);
       $pedido->__set('id_status', 2);
 
       $conexao = new Conexao();

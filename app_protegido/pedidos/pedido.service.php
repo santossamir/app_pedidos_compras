@@ -4,6 +4,7 @@
         private $conexao;
         private $pedido;
         private $id_cliente;
+        private $id_pedido;
 
         public function __construct(Conexao $conexao, Pedido $pedido){
             $this->conexao = $conexao->conectar();
@@ -27,7 +28,7 @@
         public function recuperar(){
             $query_consultar = '
                 select 
-                   p.id_cliente, c.nome_cliente, b.nome_produto,  s.status, p.data_pedido
+                   p.id_pedido, p.id_cliente, c.nome_cliente, b.nome_produto,  s.status, p.data_pedido
                 from
                    tb_pedidos as p
                    left join tb_clientes as c on (p.id_cliente = c.id_cliente)
@@ -50,17 +51,17 @@
         }
 
         public function remover(){
-            $query_remover = 'delete from tb_pedidos where id_cliente = :id_cliente';
+            $query_remover = 'delete from tb_pedidos where id_pedido = :id_pedido';
             $stmt = $this->conexao->prepare($query_remover);
-            $stmt->bindValue(':id_cliente', $this->pedido->__get('id_cliente'));
+            $stmt->bindValue(':id_pedido', $this->pedido->__get('id_pedido'));
             $stmt->execute();
         }
 
         public function marcarPago(){
-            $query_atualizar = "update tb_pedidos set id_status = :id_status where id_cliente = :id_cliente";
+            $query_atualizar = "update tb_pedidos set id_status = :id_status where id_pedido = :id_pedido";
             $stmt = $this->conexao->prepare($query_atualizar);
             $stmt->bindValue(':id_status', $this->pedido->__get('id_status'));
-            $stmt->bindValue(':id_cliente', $this->pedido->__get('id_cliente'));
+            $stmt->bindValue(':id_pedido', $this->pedido->__get('id_pedido'));
             return $stmt->execute();
         }
     }

@@ -59,12 +59,12 @@
 				pedido.insertBefore(form, pedido[0]);
 			}
 
-			function remover(id_cliente){
-				location.href = 'index.php?acao=remover&id_cliente='+id_cliente;
+			function remover(id_pedido){
+				location.href = 'index.php?acao=remover&id_pedido='+id_pedido;
 			}
 
-			function marcarPago(id_cliente){
-				location.href = 'index.php?acao=marcarPago&id_cliente='+id_cliente;
+			function marcarPago(id_pedido){
+				location.href = 'index.php?acao=marcarPago&id_pedido='+id_pedido;
 			}
 		</script>
 	</head>
@@ -106,7 +106,6 @@
 											<th>Pedido</th>
 											<th>Data</th>
 											<th>Excluir</th>
-											<th>Editar</th>
 											<th>Status</th>
 										</tr>
 									</thead>
@@ -121,11 +120,10 @@
 													<?=$pedido->nome_produto?> (<?= $pedido->status?>)
 												</td>
 												<td><?=$pedido->data_pedido?></td>
-												<td><i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?=$pedido->id_cliente?>)"></i></td>
+												<td><i class="fas fa-trash-alt fa-lg text-danger" onclick="remover(<?=$pedido->id_pedido?>)"></i></td>
 												
 												<?php if($pedido->status == 'Aberto'){?>
-													<td><i class="fas fa-edit fa-lg text-info" onclick="editar(<?=$pedido->id_cliente?>, '<?=$pedido->pedido?>')"></i></td>
-													<td><i class="fas fa-check-square fa-lg text-success" onclick="marcarPago(<?=$pedido->id_cliente?>)"></i></td>
+													<td><i class="fas fa-check-square fa-lg text-success" onclick="marcarPago(<?=$pedido->id_pedido?>)"></i></td>
 												<?php }
 												?>
 
